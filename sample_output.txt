@@ -1,0 +1,42 @@
+=== Braille Autocorrect and Suggestion System ===
+
+TEST CASE 1: Valid Word
+Expected: C-A-T (valid word)
+Input: [DK, D, KOQW]
+Converted: CAT
+Result: Valid word - CAT
+
+TEST CASE 2: Invalid Word with Suggestions
+Expected: C-A-R (invalid, suggest similar words)
+Input: [DK, D, DOQW]
+Converted: CAR
+Result: Invalid word - CAR
+Suggestions: CAT, CAN
+
+TEST CASE 3: Edge Case - Empty Input
+Expected: Handle empty input gracefully
+Input: []
+Converted: 
+Result: Invalid word - Empty input
+No suggestions found
+
+TEST CASE 4: Edge Case - Unknown Dot Patterns
+Expected: Handle unknown patterns with '?' and suggest alternatives
+Input: [XYZ, D, KOQW]
+Converted: ?AT
+Result: Invalid word - AT
+Suggestions: CAT, HAT, SAT
+
+TEST CASE 5: Edge Case - Duplicate Dots
+Expected: Normalize duplicate dots (DDKK -> DK = C)
+Input: [DDKK, D, KOQW]
+Converted: CAT
+Result: Valid word - CAT
+
+TEST CASE 6: Mixed Case and Unordered Patterns
+Expected: Handle mixed case and normalize order (kd = DK = C)
+Input: [kd, d, tqowk]
+Converted: CAT
+Result: Valid word - CAT
+
+=== System Testing Complete ===
